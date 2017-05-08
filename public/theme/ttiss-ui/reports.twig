@@ -1,0 +1,29 @@
+{% extends 'partials/_master.twig' %}
+
+{% block main %}
+    <div class="ui container">
+        <h1 class="header">
+            Reports
+        </h1>
+    </div>
+    {% for record in records %}
+        <div class="ui container">
+            <h4 class="header">{{ record.title }}</h4>
+            <p>{{ record.description }}</p>
+        </div>
+        <div class="ui items container">
+            {% for file in record.files %}
+            <div class="item">
+                    <div class="image ">
+                        <a target="_blank" href="/files/{{ file.filename }}">
+                            <img class="ui centered image" src="{{ asset('img/file.png', 'theme') }}">
+                        </a>
+                    </div>
+                    <div class="content">
+                        <a target="_blank" href="/files/{{ file.filename }}" class="header">{{ file.title }}</a>
+                    </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+{% endblock main %}

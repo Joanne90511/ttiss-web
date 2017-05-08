@@ -1,0 +1,29 @@
+{% extends 'partials/_master.twig' %}
+
+{% block main %}
+    <div class="ui container">
+        <h2 class="header">{{ record.title }}</h2>
+        <div class="ui text">
+            {{ record.before_faq }}
+        </div>
+        <div class="ui fluid accordion">
+            {% set count = true %}
+            {% for qa in record.qas %}
+            <div class="title primary large {% if count %}active{% endif %}">
+                {{ qa.get('question') }}
+                <i class="dropdown icon"></i>
+            </div>
+            <div class="content {% if count %}active{% endif %}">
+                {% autoescape false %}
+                {{ qa.get('answer') }}
+                {% endautoescape %}
+            </div>
+                {% set count = false %}
+            {% endfor %}
+        </div>
+        <div class="ui text">
+            {{ record.after_faq }}
+        </div>
+    </div>
+
+{% endblock main %}

@@ -1,0 +1,20 @@
+{% extends 'partials/_master.twig' %}
+
+{% block main %}
+    <div class="ui container">
+        <h1 class="header">{{ record.title }}</h1>
+        {% if record.banner %}
+        <div class="segment vertical centered">
+            <img src="{{ image(record.banner) }}" alt="" class="ui image centered">
+        </div>
+        {% endif %}
+
+        {# if video #}
+        {# If banner #}
+        <div class="text">
+            {{ record.body }}
+        </div>
+    </div>
+    
+
+{% endblock main %}

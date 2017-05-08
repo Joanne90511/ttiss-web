@@ -1,0 +1,16 @@
+{% extends 'partials/_master.twig' %}
+
+{% block title %}
+    {{ record.title|default('404 not found') }}
+{% endblock title %}
+
+{% block main %}
+    <div class="container ui">
+        <h1 id="fourohfour" class="ui header center aligned">404...</h1>
+        <h1 class="ui header text center aligned">Uh Oh! This page doesn't seem to exist.</h1>
+        <h2 class="ui header text center aligned">Why not try these recent articles instead</h2>
+        {{ include('partials/_recent_posts.twig') }}
+        </div>
+    </div>
+
+{% endblock main %}

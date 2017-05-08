@@ -1,0 +1,194 @@
+# This file defines the contenttypes on the website. See the documentation for
+# details: https://docs.bolt.cm/contenttypes/intro
+
+# Pages can be used for the more 'static' pages on your site. Things like
+# 'about us', 'contact' or a 'disclaimer'. This content-type has a 'templateselect'
+# field, which allows you to override the record_template setting for an
+# individual page.
+# The taxonomy for this contenttype is defined as 'groups', which is a so-called
+# "grouping taxonomy". This way you can easily group sets of pages that logically
+# belong together. If your site has a 'services' section, in which you'd like to
+# list the different types of services a company provides, you can group these
+# together.
+
+pages:
+    name: Pages
+    singular_name: Page
+    fields:
+        title:
+            type: text
+            class: large
+            group: content
+        slug:
+            type: slug
+            uses: title
+        image:
+            type: image
+        banner:
+            type: image
+        body:
+            type: html
+            height: 300px
+#        template:
+#            type: templateselect
+#            filter: '*.twig'
+#    taxonomy: [ groups ]
+    default_status: publish
+    recordsperpage: 100
+
+
+# Entries can be used for things like 'news' or 'blogpostings'. They have a 'teaser',
+# which can be used for a short blurb on listing-pages, allowing visitors to
+# click-through to the rest of the entry. It also has fields for an image and an
+# optional video.
+# A relation is defined to the pages contenttype. This way you can refer to a page
+# from your news-item.
+# This contenttype defines 'categories' and 'tags' as taxonomies, allowing the
+# editor to use both to categorize a specific entry.
+# The 'sort' is set to '-datepublish', which means that newer entries will be
+# shown above older entries.
+posts:
+    name: Posts
+    singular_name: Post
+    fields:
+        title:
+            type: text
+            class: large
+            group: content
+        slug:
+            type: slug
+            uses: title
+        teaser:
+            postfix: "Teaser is used when a new items are listed. Try using the first 200 characters of the post if nothing else"
+            type: textarea
+            height: 150px
+        body:
+            type: html
+            height: 300px
+        image:
+            type: image
+            group: media
+        video:
+            type: video
+    relations:
+        pages:
+          multiple: false
+          order: title
+          label: Select a page
+    taxonomy: [ categories, tags ]
+    record_template: post.twig
+    listing_template: listing.twig
+    listing_records: 10
+    default_status: publish
+    sort: -datepublish
+    recordsperpage: 10
+
+faq:
+    name: FAQs
+    singular_name: FAQ
+    fields:
+        title:
+          type: text
+        slug:
+          type: slug
+          uses: title
+        before_faq:
+          label: Before
+          type: html
+        after_faq:
+          label: After
+          type: html
+        qas:
+          type: repeater
+          label: "Q & A's"
+          fields:
+            question:
+              type: text
+            answer:
+              type: html
+    default_status: publish
+    record_template: faq.twig
+    listing_template: listing.twig
+
+links:
+    name: Links
+    singular_name: Link
+    fields:
+        title:
+            type: text
+        url:
+            type: text
+            pattern: url
+    default_status: publish
+
+training:
+    name: Training
+    singular_name: training
+    fields:
+        title:
+            type: text
+        slug:
+            type: slug
+            uses: title
+        description:
+            type: textarea
+        videos:
+            type: repeater
+            fields:
+                video:
+                    type: video
+                description:
+                    type: textarea
+        links:
+            type: repeater
+            fields:
+                link:
+                    type: text
+                    pattern: url
+                description:
+                    type: textarea
+    default_status: publish
+
+reports:
+    name: Reports
+    singular_name: Report
+    fields:
+        title:
+            type: text
+        slug:
+            type: slug
+            uses: title
+        start_date:
+            info: "Starting Date of the Report"
+            type: date
+        end_date:
+            info: "Ending Date of the Report"
+            type: date
+        description:
+            type: textarea
+        files:
+            type: filelist
+
+resources:
+    name: Resources
+    singular_name: Resource
+    fields:
+        title:
+            type: text
+        slug:
+            type: slug
+            uses: title
+        description:
+            type: textarea
+        file:
+            prefix: "<h3>Only choose file or link. File will take precedent over link</h3>"
+            type: file
+        url:
+            label: Link
+            type: text
+            pattern: url
+        image:
+            postfix: "If an image is set it will be used as the link to the file or url provided"
+            type: image
+
+    default_status: publish

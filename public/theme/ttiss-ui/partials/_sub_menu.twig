@@ -1,0 +1,31 @@
+{% macro display_menu_item(item, loop) %}
+    {% spaceless %}
+        {% if item.submenu is defined %}
+            <div class="compact menu red borderless">
+                <div class="ui simple dropdown item ">
+                    {{ item.label }}
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        {% for submenu in item.submenu %}
+                        <a class="item {{ submenu|current ? ' active' }}" href="{{ submenu.link }}">{{ submenu.label }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <a class="item {{ item|current ? ' active' }}" href="{{ item.link }}">{{ item.label }}</a>
+        {% endif %}
+    {% endspaceless %}
+{% endmacro %}
+
+{# Make the macro available for use #}
+{% from _self import display_menu_item %}
+
+{# The main menu loop: Iterates over the items, calling `display_menu_item` #}
+    {% for item in menu %}
+        {% if item.label is defined %}
+            {#<a class="item">{{ item.label }}</a>#}
+            {{ display_menu_item(item, loop) }}
+        {% endif %}
+    {% endfor %}
+

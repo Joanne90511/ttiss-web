@@ -1,0 +1,37 @@
+{% macro display_menu_item(item, loop) %}
+    {% spaceless %}
+        <li class="{{ (item.submenu|default(false)) ? ' dropdown' -}}{{ item|current ? ' active' }}">
+
+            <a href="{{ item.link }}"
+               title='{{ item.title|default('')|escape }}'
+               class='nav-link {{ item.class|default('') }} {{ (item.submenu|default(false)) ? ' dropdown-toggle' -}}'
+                    {% if (item.submenu|default(false)) %}
+                        data-toggle="dropdown"
+                    {% endif %}
+            >
+                {{- item.label|default('-') -}}
+            </a>
+
+            {% if item.submenu is defined %}
+                <div class="dropdown-menu">
+                    {% for submenu in item.submenu %}
+                        <a class="dropdown-item" href="{{ submenu.link }}">{{- submenu.label|default('-') -}}</a>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </li>
+    {% endspaceless %}
+{% endmacro %}
+
+{# Make the macro available for use #}
+{% from _self import display_menu_item %}
+
+{# The main menu loop: Iterates over the items, calling `display_menu_item` #}
+<ul class="navbar-nav ml-auto">
+    {% for item in menu %}
+        {% if item.label is defined %}
+            {{ display_menu_item(item, loop) }}
+        {% endif %}
+    {% endfor %}
+</ul>
+

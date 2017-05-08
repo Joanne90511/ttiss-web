@@ -1,0 +1,60 @@
+.hidden.menu {
+    display: none;
+}
+
+.footer.segment {
+    padding: 2em 0em;
+}
+
+#menu .toc.item {
+    display: none;
+}
+
+
+@media only screen and (max-width: 700px) {
+    .ui.fixed.menu {
+        display: none !important;
+    }
+
+    #menu .item,
+    #menu .menu {
+        display: none;
+    }
+
+    #menu .toc.item, #menu .menu a.item.header {
+        display: block;
+    }
+    .footer.segment {
+        padding: 1em 0em;
+    }
+}
+
+.ui.card>.content>.description, .ui.cards>.card>.content>.description {
+    min-height:60px;
+}
+#fourohfour {
+    font-size:10rem;
+}
+/* Need to keep a sticky footer */
+.pusher {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+#main {
+    flex: 1;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.masthead {
+
+}
+.gradient {
+    height: 500px;
+    background: #990033;
+    margin-top: -30px !important;
+    background: -moz-linear-gradient(top, #990033 0%, #330000 100%) !important;
+    background: -webkit-linear-gradient(top, #990033 0%,#330000 100%) !important;
+    background: linear-gradient(to bottom, #990033 0%,#330000 100%) !important;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#990033', endColorstr='#330000',GradientType=0 ) !important;
+}

@@ -1,0 +1,33 @@
+# This file defines the menus on the website. See the documentation for
+# details: https://docs.bolt.cm/configuration/menus
+
+main:
+    - label: About
+      path: /faq/about
+      submenu:
+          - label: What is TTISS-ON
+            path: about
+          - label: Contact Us
+            path: contact
+          - label: Participating Sites
+            path: sites
+    - label: Reactions
+      path: pages/
+      submenu:
+          - label: Report a Reaction
+            link: https://ttiss.mcmaster.ca/form
+          - label: Form FAQ
+            path: faq/form-faq
+          - label: Reaction Workflow Tool
+            link: /tool
+    - label: Resources
+      path: resources
+    - label: Committees
+      path: committees
+    - label: Transfusion Data
+      link: https://google.ca
+      submenu:
+          - label: 2008 - 2014 Overview
+            path: overview
+          - label: TTISS-ON Reports
+            path: reports

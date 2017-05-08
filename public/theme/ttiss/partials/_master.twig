@@ -1,0 +1,45 @@
+{% set main_width = theme.layout.main_width|default(8) %}
+{% set aside_width = theme.layout.aside_width|default(4) %}
+<!doctype html>
+<html class="no-js" lang="{{ htmllang() }}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    {# make sure we always display a proper title: The record's title if there is one, appended with the
+       sitename. If there is no title, we append the sitename with the payoff, if there is one. #}
+    <title>
+        {%- if record.title is defined %}{{ record.title|striptags }} | {% endif -%}
+        {{ app.config.get('general/sitename') -}}
+        {% if record.title is not defined and app.config.get('general/payoff') %} | {{ app.config.get('general/payoff') }}{% endif -%}
+    </title>
+    <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css', 'theme') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css', 'theme') }}">
+    <link href='https://fonts.googleapis.com/css?family=Noto+Sans:700,700italic' rel='stylesheet' type='text/css'>
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    {% block headincludes %}
+    {% endblock headincludes %}
+</head>
+<body>
+
+{% block body %}
+
+    {{ include('partials/_topbar.twig') }}
+    {#{{ include('partials/_header.twig') }}#}
+    <div id="main" class="container">
+        {% block main %}
+        {% endblock main %}
+    </div>
+{% endblock body %}
+
+{{ include('partials/_footer.twig') }}
+
+{% block bottomincludes %}
+{% endblock bottomincludes %}
+</body>
+</html>

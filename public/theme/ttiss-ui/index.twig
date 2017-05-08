@@ -1,0 +1,86 @@
+{% extends 'partials/_master.twig' %}
+
+{% block main %}
+    <div class="ui masthead vertical inverted gradient segment center aligned">
+        <div class="ui text center container">
+            <h1 style="margin-top:100px;" class="ui inverted header ">
+                Welcome to TTISS-ON
+            </h1>
+            <h3 class="header">
+                Please take a look around
+            </h3>
+            <a target="_blank" href="https://mctr.mcmaster.ca/surveys/?s=R7EEM83X7A" class="ui button green huge">Join TTISS</a>
+
+        </div>
+    </div>
+    <div class="ui segment vertical">
+        <div class="ui cards three container stackable">
+
+        <div class="card">
+            <div class="content">
+                <div class="ui centered header">Want to Join?</div>
+            </div>
+            <div class="image">
+                <img src="http://placehold.it/290x290" alt="">
+            </div>
+            <div class="content">
+
+                <div class="description">
+Fill out this online form to join TTISS-ON
+                </div>
+            </div>
+            <a target="_blank" href="https://mctr.mcmaster.ca/surveys/?s=R7EEM83X7A" class="ui bottom attached button huge green">
+                Become a Member
+            </a>
+        </div>
+        <div class="card">
+            <div class="content">
+                <div class="ui centered header">Report a Reaction</div>
+            </div>
+            <div class="image">
+                <img src="http://placehold.it/290x290" alt="">
+            </div>
+            <div class="content">
+
+                <div class="description">
+                    Report a reaction to TTISS-ON. Choose from the original REDCap form or try the new form developed by
+                    TTISS-ON
+                </div>
+            </div>
+            <div class="ui bottom attached fluid buttons">
+                <a target="_blank" href="https://mctr.mcmaster.ca/" class="ui button red huge">
+                    REDCap
+                </a>
+                <a target="_blank" href="https://ttiss.mcmaster.ca/form" class="ui button blue huge">
+                    New Form
+                </a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="content">
+                <div class="header ui centered">Who Do I Report To?</div>
+            </div>
+            <div class="image">
+                <img src="http://placehold.it/290x290" alt="">
+            </div>
+            <div class="content">
+
+                <div class="description">
+                    Use this simple online form to determine which agencies you should report to
+                </div>
+            </div>
+            <a target="_blank" href="https://mctr.mcmaster.ca/surveys/?s=ELF8R8JPYE" class="ui bottom attached huge button blue">
+                Who do I Report to?
+            </a>
+        </div>
+    </div>
+    </div>
+    <div class="ui segment vertical">
+        <div class="ui large header container">Recent Posts</div>
+        {{ include('partials/_recent_posts.twig') }}
+    </div>
+
+
+
+
+{% endblock main %}

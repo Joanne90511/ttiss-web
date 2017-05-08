@@ -1,0 +1,43 @@
+{% extends 'partials/_master.twig' %}
+
+{% block main %}
+    <div class="ui container">
+        <h1 class="header">
+            Resources
+        </h1>
+    </div>
+    <div class="ui items container">
+        {% for record in records %}
+            <div class="item">
+                {% if record.image %}
+                    <div class="image">
+                        <a target="_blank" href="{{ record.url }}">
+                            <img class="ui image" src="{{ image(record.image) }}">
+                        </a>
+                    </div>
+                {% elseif record.file %}
+                    <div class="image ">
+                        <a target="_blank" href="/files/{{ record.file }}">
+                            <img class="ui centered image" src="{{ asset('img/file.png', 'theme') }}">
+                        </a>
+                    </div>
+                {% endif %}
+                {% if record.file %}
+                    <div class="content">
+                        <a target="_blank" href="/files/{{ record.file }}" class="header">{{ record.title }}</a>
+                        <div class="description">
+                            <p>{{ record.description }}</p>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="content">
+                        <a target="_blank" href="{{ record.url }}" class="header">{{ record.title }}</a>
+                        <div class="description">
+                            <p>{{ record.description }}</p>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock main %}

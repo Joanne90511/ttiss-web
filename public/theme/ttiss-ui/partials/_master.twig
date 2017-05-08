@@ -1,0 +1,50 @@
+{% set main_width = theme.layout.main_width|default(8) %}
+{% set aside_width = theme.layout.aside_width|default(4) %}
+<!doctype html>
+<html class="no-js" lang="{{ htmllang() }}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    {# make sure we always display a proper title: The record's title if there is one, appended with the
+       sitename. If there is no title, we append the sitename with the payoff, if there is one. #}
+    <title>
+        {{ app.config.get('general/sitename') -}}&nbsp;|
+        {% block title %}
+        {%- if record.title is defined %}
+            {{ record.title|striptags }}
+            {% else %}
+            Welcome
+        {% endif -%}
+        {% endblock %}
+
+    </title>
+    <link rel="stylesheet" href="{{ asset('dist/semantic.min.css', 'theme') }}">
+    <link rel="stylesheet" href="{{ asset('dist/custom.css', 'theme') }}">
+    {% block headincludes %}
+    {% endblock headincludes %}
+</head>
+<body class="pushable">
+
+{{ menu(template = 'partials/_side_menu.twig') }}
+
+
+<!-- Sidebar Menu -->
+
+<div class="pusher">
+    {{ include('partials/_topbar.twig') }}
+    <div id="main">
+        {% block main %}
+        {% endblock main %}
+    </div>
+    {{ include('partials/_footer.twig') }}
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="{{ asset('dist/semantic.min.js', 'theme') }}"></script>
+<script src="{{ asset('dist/custom.js', 'theme') }}"></script>
+{% block bottomincludes %}
+{% endblock bottomincludes %}
+</body>
+</html>

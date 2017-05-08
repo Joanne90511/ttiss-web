@@ -1,0 +1,53 @@
+###############################################################################
+#                          Generated on phpdocker.io                          #
+###############################################################################
+
+ttblog-mailhog:
+  image: phpdockerio/mailhog:latest
+  container_name: ttblog-mailhog
+  ports:
+    - "8001:8025"
+
+ttblog-mysql:
+  image: mysql:5.7
+  container_name: ttblog-mysql
+  environment:
+    - MYSQL_ROOT_PASSWORD=root
+    - MYSQL_DATABASE=ttblog
+    - MYSQL_USER=ttblog
+    - MYSQL_PASSWORD=ttblog
+
+ttblog-webserver:
+  image: phpdockerio/nginx:latest
+  container_name: ttblog-webserver
+  volumes:
+      - ..:/var/www/ttblog
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+  ports:
+   - "8000:80"
+  links:
+   - ttblog-php-fpm
+
+ttblog-php-fpm:
+  build: .
+  dockerfile: php-fpm/Dockerfile
+  container_name: ttblog-php-fpm
+  volumes:
+    - ..:/var/www/ttblog
+    - ./php-fpm/php-ini-overrides.ini:/etc/php/7.1/fpm/conf.d/99-overrides.ini
+  links:
+    - ttblog-mailhog
+    - ttblog-mysql
+
+ttblog-phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: ttblog-phpmyadmin
+    environment:
+     - PMA_ARBITRARY=1
+    restart: always
+    ports:
+     - 8002:80
+    volumes:
+     - /sessions
+    links:
+     - ttblog-mysql:db

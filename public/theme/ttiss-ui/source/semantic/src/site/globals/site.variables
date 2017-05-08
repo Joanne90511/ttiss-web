@@ -1,0 +1,24 @@
+/*******************************
+     User Global Variables
+*******************************/
+/*---  Colors  ---*/
+@blue             : #0074D9;
+@green            : #2ECC40;
+@orange           : #FF851B;
+@pink             : #D9499A;
+@purple           : #A24096;
+@red              : #990033;
+@teal             : #39CCCC;
+@yellow           : #FFCB08;
+
+@black            : #191919;
+@grey             : #CCCCCC;
+@white            : #FFFFFF;
+
+@defaultBorderRadius: 1px;
+@primaryColor: @red;
+@h1 : unit((28 / 10), rem);
+@h2 : unit((24 / 10), rem);
+@h3 : unit((18 / 10), rem);
+@h4 : unit((15 / 10), rem);
+@h5 : unit((14 / 10), rem);

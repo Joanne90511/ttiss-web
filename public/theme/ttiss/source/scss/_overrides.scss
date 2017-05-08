@@ -1,0 +1,63 @@
+$footer-height: 360px;
+#footerwrap {
+  background-color: $brand-primary;
+  color: $white;
+
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: $footer-height;
+  button:focus {
+    outline: 0;
+  }
+  .navbar {
+    background-color: $brand-primary;
+    .navbar-brand {
+      color: $white;
+    }
+
+    .navbar-toggler {
+      color: $white;
+    }
+  }
+  #main {
+    margin-top: 20px;
+    .header-image {
+      margin-bottom: 20px;
+    }
+    .fp-card {
+      width: 30rem;
+    }
+  }
+  .footer {
+    background-color: $brand-primary;
+    color: $white;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: $footer-height;
+    .footer-title {
+      border-bottom: 1px solid white;
+      line-height: 45px;
+    }
+  }
+}
+
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-brand:focus, .navbar-light .navbar-brand:hover, .navbar-light .navbar-toggler:focus, .navbar-light .navbar-toggler:hover {
+  color: #CCC;
+}
+.dropdown-menu {
+  -webkit-border-radius:1px;
+  -moz-border-radius:1px;
+  border-radius:1px;
+  margin-top: 6px;
+  .dropdown-item:active{
+    background-color: #CCC;
+  }
+}
+

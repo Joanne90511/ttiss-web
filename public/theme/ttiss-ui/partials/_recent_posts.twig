@@ -1,0 +1,21 @@
+{% setcontent new = 'posts/latest/3' %}
+<div class="ui items container">
+    {% for post in new %}
+        <div class="item">
+            <div class="content">
+                <a href="{{ post.link }}" class="header">{{ post.title }}</a>
+                <div class="meta">
+                    <span>{{ post.datepublish|date("m/d/Y") }} - {{ post.user.displayname }}</span>
+                </div>
+                <div class="description">
+                    <p>{{ post.excerpt(300, false, search|default('')) }}</p>
+                </div>
+                <div class="extra">
+                    <a href="{{ post.link }}" class="ui button primary">
+                        Read More...
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

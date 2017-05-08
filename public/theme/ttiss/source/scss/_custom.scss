@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+// Reassign color vars to semantic color scheme
+$brand-primary: #990033 !default;
+$brand-success: $green !default;
+$brand-info: $teal !default;
+$brand-warning: $orange !default;
+$brand-danger: $red !default;
+$brand-inverse: $gray-dark !default;
+
+//File with customizations to the bootstrap v4 frameworks
+
+$btn-border-radius: 1px;
+$input-border-radius: 1px;
+$brand-primary: #903;
+$navbar-border-radius: 0px;
+$navbar-light-color: $white;
+$navbar-light-toggler-border: 0px;
+$navbar-light-toggler-bg: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#{$white}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E"), "#", "%23") !default;
+
+$dropdown-bg: $brand-primary;
+$dropdown-link-color: $white;
+$font-family-base: 'Lato', sans-serif;
+$btn-primary-bg: $brand-primary;
+$btn-primary-border: darken($brand-primary, 10%);
+$nav-link-hover-bg:             $blue !default;
