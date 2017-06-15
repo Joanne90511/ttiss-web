@@ -1,14 +1,12 @@
 {% extends 'partials/_master.twig' %}
 
 {% block main %}
-    <div class="ui container">
-        <h2 class="header">Coming Soon...</h2>
-    </div>
+    <div id="root"></div>
 
 
 {% endblock main %}
 
 {% block bottomincludes %}
-
+<script type="text/javascript" src="{{ asset('dist/tool.js', 'theme') }}"></script>
 
 {% endblock %}
